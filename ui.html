@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DMX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn;
+
+        function initAudioPlayer () {
+            kick = new Audio();
+            snare = new Audio();
+            clHat = new Audio();
+            opHat = new Audio();
+
+
+            kick.src = 'samples/03_BASS_01.wav';
+            snare.src = 'samples/06_SNARE_01.wav';
+            clHat.src = 'samples/09_HI-HAT_CLOSED.wav';
+            opHat.src = 'samples/11_HI-HAT_OPEN.wav';
+
+            // set obj references
+            kickBtn = $('.kick');
+            snareBtn = $('.snare');
+            clHatBtn = $('.clhat');
+            opHatBtn = $('.ophat');
+
+            kickBtn.each(function(i, elt) {
+                elt.addEventListener('click', function (e){
+                    $(e.currentTarget).toggleClass('active');
+                    trigger(kick)
+                });
+            });
+            snareBtn.each(function(i, elt) {
+                elt.addEventListener('click', function (e){
+                    $(e.currentTarget).toggleClass('active');
+                    trigger(snare)
+                });
+            });
+            clHatBtn.each(function(i, elt) {
+                elt.addEventListener('click', function (e){
+                    $(e.currentTarget).toggleClass('active');
+                    trigger(clHat)
+                });
+            });
+            opHatBtn.each(function(i, elt) {
+                elt.addEventListener('click', function (e){
+                    $(e.currentTarget).toggleClass('active');
+                    trigger(opHat)
+                });
+            });
+        }
+
+        function trigger (audio) {
+            audio.play();
+        }
+
+        window.addEventListener("load", initAudioPlayer);
+    </script>
+    <link rel='stylesheet' href='assets/css/styles.css' type='text/css'/>
+</head>
+<body>
+    <section>
+        <article class='row one'>
+            <span>BASS</span>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+            <button class="kick simple-button">Kick</button>
+        </article>
+        <article class='row two'>
+            <span>SNARE</span>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+            <button class="snare simple-button">Snare</button>
+        </article>
+        <article class='row three'>
+            <span>HI-HAT A</span>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+            <button class="clhat  simple-button">Closed Hat</button>
+        </article>
+        <article class='row four'>
+            <span>HI-HAT B</span>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+            <button class="ophat simple-button">Opened Hat</button>
+        </article>
+    </section>
+</body>
+</html>
