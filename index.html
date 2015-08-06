@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DMX</title>
+    <script type="text/javascript">
+        var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn;
+
+        function initAudioPlayer () {
+            kick = new Audio();
+            snare = new Audio();
+            clHat = new Audio();
+            opHat = new Audio();
+
+
+            kick.src = 'samples/03_BASS_01.wav';
+            snare.src = 'samples/06_SNARE_01.wav';
+            clHat.src = 'samples/09_HI-HAT_CLOSED.wav';
+            opHat.src = 'samples/11_HI-HAT_OPEN.wav';
+
+            // set obj references
+            kickBtn = document.getElementById('kick');
+            snareBtn = document.getElementById('snare');
+            clHatBtn = document.getElementById('clhat');
+            opHatBtn = document.getElementById('ophat');
+
+            kickBtn.addEventListener('click', function(){ trigger(kick) });
+            snareBtn.addEventListener('click', function(){ trigger(snare) });
+            clHatBtn.addEventListener('click', function(){ trigger(clHat) });
+            opHatBtn.addEventListener('click', function(){ trigger(opHat) });
+        }
+
+        function trigger (audio) {
+            audio.play();
+        }
+
+        window.addEventListener("load", initAudioPlayer);
+    </script>
+</head>
+<body>
+    <button id="kick">Kick</button>
+    <button id="snare">Snare</button>
+    <button id="clhat">Closed Hat</button>
+    <button id="ophat">Opened Hat</button>
+</body>
+</html>
