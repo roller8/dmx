@@ -63,6 +63,7 @@ function initAudioPlayer() {
 
     handleStartStop();
     handleVolInput();
+    bindDrumKeys();
 
     $('.swing').on('click', 'button', function () {
         $(this).toggleClass('active');
@@ -140,6 +141,28 @@ function checkKey(e) {
        tempo = volume + 1;
        $input.val(tempo);
     }
+}
+
+function bindDrumKeys() {
+    window.addEventListener("keydown", function() {
+        switch (window.event.keyCode) {
+            case 49:
+                trigger(kick);
+                break;
+            case 50:
+                trigger(snare);
+                break;
+            case 51:
+                trigger(clap);
+                break;
+            case 52:
+                trigger(clHat);
+                break;
+            case 53:
+                trigger(opHat);
+                break;
+        }
+    });
 }
 
 function handleTempo(init) {
