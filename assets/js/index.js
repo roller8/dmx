@@ -8,7 +8,7 @@ var swing = false;
 var sounds = {
     'kick': {'src': 'samples/03_BASS_01.wav', 'volume': 1},
     'snare': {'src': 'samples/06_SNARE_01.wav', 'volume': 1},
-    'clap': {'src': 'samples/26_CLAP.wav', 'volume': 0.2},
+    'clap': {'src': 'samples/26_CLAP.wav', 'volume': 0.1},
     'clHat': {'src': 'samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2},
     'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07},
 }
@@ -74,13 +74,6 @@ function trigger(sound, count) {
     } else {
        audio.play();//normal
     }
-}
-
-function trigClap () {
-    clap = new Audio();
-    clap.src = 'samples/26_CLAP.wav'
-    clap.volume = 0.2;
-    clap.play();
 }
 
 function handleStartStop() {
@@ -155,7 +148,7 @@ function bindDrumKeys() {
                 trigger(sounds.snare);
                 break;
             case 51:
-                trigClap(sounds.clap);
+                trigger(sounds.clap);
                 break;
             case 52:
                 trigger(sounds.clHat);
