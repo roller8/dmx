@@ -62,7 +62,7 @@ function handleStartStop() {
         $(e.currentTarget).toggleClass('active');
         handleTempo(init);
         if ($startButton.hasClass('active')) {
-            playSubdiv(count);
+            //playSubdiv(count);
             dome();
         } else {
             clearTimeout(timer);
@@ -72,10 +72,10 @@ function handleStartStop() {
         function dome() {
             timer = setTimeout(function () {
                 var init2 = new Date().getTime();
-                if (count > subdivision * 4) count = 0;
                 playSubdiv(count);
                 handleTempo(init2);
-                count++;
+                if (count >= subdivision * 4) count = 0;
+                else count++;
                 dome();
             }, interval);
         }
@@ -85,7 +85,7 @@ function handleStartStop() {
 function handleTempo(init) {
     var diff = new Date().getTime() - init;
     tempo    = $('.tempo').find('input').val();
-    interval = Math.round((minuteToMil/tempo)/subdivision) - diff;
+    interval = Math.round((minuteToMil/tempo)/subdivision - diff);
 }
 
 function playSubdiv(count) {

@@ -23,7 +23,6 @@
     font-size: 10px;
     line-height: 33px;
     width: 44px;
-    box-sizing: border-box;
  }
 
  .simple-button {
@@ -34,7 +33,6 @@
     overflow: hidden;
     text-indent: 120%;
     white-space: nowrap;
-    box-sizing: border-box;
  }
  .simple-button.active {
     background: url(../../images/simple-button-active.jpg) no-repeat;
