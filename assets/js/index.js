@@ -16,6 +16,9 @@ function initAudioPlayer () {
     clHat.src   = 'samples/09_HI-HAT_CLOSED.wav';
     opHat.src   = 'samples/11_HI-HAT_OPEN.wav';
 
+    clHat.volume = 0.2;
+    opHat.volume = 0.07;
+
     // set obj references
     kickBtn     = $('.kick');
     snareBtn    = $('.snare');
