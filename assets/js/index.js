@@ -13,13 +13,13 @@ var sounds = {
     'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07}
 };
 
-var pattern = {
-    'kick':     [1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
-    'snare':    [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0],
-    'clap':     [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0],
-    'clHat':    [1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0],
-    'opHat':    [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1]
-}
+var pattern = [
+    {'name': 'kick',    'seq': [1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0] },
+    {'name': 'snare',   'seq': [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]},
+    {'name': 'clap',    'seq': [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0]},
+    {'name': 'clHat',   'seq': [1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0]},
+    {'name': 'opHat',   'seq': [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1]}
+];
 
 function initAudioPlayer() {
     // set obj references
@@ -63,10 +63,21 @@ function initAudioPlayer() {
     handleStartStop();
     handleVolInput();
     bindDrumKeys();
+    loadPattern();
 
     $('.swing').on('click', 'button', function () {
         $(this).toggleClass('active');
         swing = !swing;
+    });
+}
+
+function loadPattern() {
+    $('.row').each(function (index, elem) {
+        $(elem).find('button').each(function (i, el) {
+            if (pattern[index].seq[i] === 1) {
+                $(el).addClass('active');
+            }
+        });
     });
 }
 
