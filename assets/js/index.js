@@ -64,7 +64,11 @@ function initAudioPlayer() {
     handleVolInput();
     bindDrumKeys();
     loadPattern();
+    clearPattern();
+    handleSwing();
+}
 
+function handleSwing() {
     $('.swing').on('click', 'button', function () {
         $(this).toggleClass('active');
         swing = !swing;
@@ -78,6 +82,12 @@ function loadPattern() {
                 $(el).addClass('active');
             }
         });
+    });
+}
+
+function clearPattern() {
+    $('.clear-pattern').on('click', 'button', function () {
+        $('.row').find('button').removeClass('active');
     });
 }
 
