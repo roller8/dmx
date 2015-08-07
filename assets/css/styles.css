@@ -12,11 +12,7 @@ section {
     position: relative;
 }
 
-.row.one,
-.row.two,
-.row.three,
-.row.four,
-.row.five { margin: 0 0 8px 75px; }
+.row { margin: 0 0 8px 75px; }
 
 .row > span {
     display: inline-block;
@@ -41,9 +37,6 @@ section {
 
 .simple-button.on { border: 1px solid red; }
 
-.simple-button:nth-of-type(4n+1),
-.simple-button:nth-of-type(4n+1),
-.simple-button:nth-of-type(4n+1),
 .simple-button:nth-of-type(4n+1) {  margin-left: 12px; }
 
 .start-stop,
@@ -118,4 +111,5 @@ section {
     right: 80px;
     box-shadow: 0 0 23px rgba(255,0,0,1);
 }
+
 .hide { display: none; }
