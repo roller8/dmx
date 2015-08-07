@@ -1,4 +1,4 @@
-var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn, clap, clapBtn, timer, $startButton;
+var timer, $startButton;
 var tempo       = 60;
 var minuteToMil = 60000;
 var subdivision = 4;
@@ -6,21 +6,21 @@ var interval    = Math.round((minuteToMil / tempo) / subdivision);
 var swing       = false;
 
 var sounds      = {
-    'kick': {'src': 'samples/03_BASS_01.wav', 'volume': 1},
-    'snare': {'src': 'samples/06_SNARE_01.wav', 'volume': 1},
-    'clap': {'src': 'samples/26_CLAP.wav', 'volume': 0.1},
-    'clHat': {'src': 'samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2},
-    'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07},
-    'yeah': {'src': 'samples/awyeah.wav', 'volume': 0.4},
-    'feel': {'src': 'samples/canyoufeelit.wav', 'volume': 0.4},
-    'check': {'src': 'samples/checkthisout.wav', 'volume': 0.4},
-    'here': {'src': 'samples/herewego.wav', 'volume': 0.4},
-    'oww': {'src': 'samples/oww.wav', 'volume': 0.4},
-    'woo': {'src': 'samples/woo.wav', 'volume': 0.4},
-    'hiTom': {'src': 'samples/12_TOM_01.wav', 'volume': 0.3},
-    'midTom': {'src': 'samples/14_TOM_03.wav', 'volume': 0.3},
-    'loTom': {'src': 'samples/17_TOM_06.wav', 'volume': 0.3},
-    'cowbell': {'src': 'samples/808cowbell.wav', 'volume': 0.5}
+    'kick':     {'src': 'samples/03_BASS_01.wav',       'volume': 1   },
+    'snare':    {'src': 'samples/06_SNARE_01.wav',      'volume': 1   },
+    'clap':     {'src': 'samples/26_CLAP.wav',          'volume': 0.1 },
+    'clHat':    {'src': 'samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2 },
+    'opHat':    {'src': 'samples/11_HI-HAT_OPEN.wav',   'volume': 0.07},
+    'yeah':     {'src': 'samples/awyeah.wav',           'volume': 0.4 },
+    'feel':     {'src': 'samples/canyoufeelit.wav',     'volume': 0.4 },
+    'check':    {'src': 'samples/checkthisout.wav',     'volume': 0.4 },
+    'here':     {'src': 'samples/herewego.wav',         'volume': 0.4 },
+    'oww':      {'src': 'samples/oww.wav',              'volume': 0.4 },
+    'woo':      {'src': 'samples/woo.wav',              'volume': 0.4 },
+    'hiTom':    {'src': 'samples/12_TOM_01.wav',        'volume': 0.3 },
+    'midTom':   {'src': 'samples/14_TOM_03.wav',        'volume': 0.3 },
+    'loTom':    {'src': 'samples/17_TOM_06.wav',        'volume': 0.3 },
+    'cowbell':  {'src': 'samples/808cowbell.wav',       'volume': 0.5 }
 
 };
 
@@ -28,17 +28,17 @@ var pattern     = [
     {'name': 'kick',    'seq': [1,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0]},
     {'name': 'snare',   'seq': [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]},
     {'name': 'clap',    'seq': [0,0,0,0,1,1,0,0,1,0,0,1,0,0,1,0]},
-    {'name': 'clHat',   'seq': [1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0 ]},
+    {'name': 'clHat',   'seq': [1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0]},
     {'name': 'opHat',   'seq': [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1]}
 ];
 
 function initAudioPlayer() {
     // set obj references
-    kickBtn     = $('.kick');
-    snareBtn    = $('.snare');
-    clapBtn     = $('.clap');
-    clHatBtn    = $('.clhat');
-    opHatBtn    = $('.ophat');
+    var kickBtn     = $('.kick');
+    var snareBtn    = $('.snare');
+    var clapBtn     = $('.clap');
+    var clHatBtn    = $('.clhat');
+    var opHatBtn    = $('.ophat');
 
     kickBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
@@ -115,10 +115,10 @@ function trigger(sound, count) {
 
     if (swing && (count % 2 === 1)) {
         setTimeout(function () {
-            playSound(audio);//delayed trigger
+            playSound(audio); //delayed trigger
         }, interval/(Math.random() * 3 + 2));
     } else {
-       playSound(audio);//normal
+       playSound(audio); //normal
     }
 }
 
@@ -126,6 +126,7 @@ function playSound(audio) {
     var $glow = $('.glow');
     audio.play();
     $glow.removeClass('hide');
+
     setTimeout(function () {
         $glow.addClass('hide');
     }, interval - 5);
