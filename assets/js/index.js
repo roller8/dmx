@@ -5,24 +5,15 @@ var subdivision = 4;
 var interval = Math.round((minuteToMil / tempo) / subdivision);
 var swing = false;
 
+var sounds = {
+    'kick': {'src': 'samples/03_BASS_01.wav', 'volume': 1},
+    'snare': {'src': 'samples/06_SNARE_01.wav', 'volume': 1},
+    'clap': {'src': 'samples/26_CLAP.wav', 'volume': 0.2},
+    'clHat': {'src': 'samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2},
+    'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07},
+}
+
 function initAudioPlayer() {
-    kick = new Audio();
-    snare = new Audio();
-    clap = new Audio();
-    clHat = new Audio();
-    opHat = new Audio();
-
-
-    kick.src = 'samples/03_BASS_01.wav';
-    snare.src = 'samples/06_SNARE_01.wav';
-    clap.src = 'samples/26_CLAP.wav'
-    clHat.src = 'samples/09_HI-HAT_CLOSED.wav';
-    opHat.src = 'samples/11_HI-HAT_OPEN.wav';
-
-    clap.volume = 0.2;
-    clHat.volume = 0.2;
-    opHat.volume = 0.07;
-
     // set obj references
     kickBtn = $('.kick');
     snareBtn = $('.snare');
@@ -33,31 +24,31 @@ function initAudioPlayer() {
     kickBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
-            trigger(kick);
+            trigger(sounds.kick);
         });
     });
     snareBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
-            trigger(snare);
+            trigger(sounds.snare);
         });
     });
     clapBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
-            trigger(clap);
+            trigger(sounds.clap);
         });
     });
     clHatBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
-            trigger(clHat);
+            trigger(sounds.clHat);
         });
     });
     opHatBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
-            trigger(opHat);
+            trigger(sounds.opHat);
         });
     });
 
@@ -71,7 +62,11 @@ function initAudioPlayer() {
     });
 }
 
-function trigger(audio, count) {
+function trigger(sound, count) {
+    var audio = new Audio();
+    audio.src = sound.src;
+    audio.volume = sound.volume;
+
     if (swing && (count % 2 === 1)) {
         setTimeout(function () {
             audio.play();//delayed trigger
@@ -79,6 +74,13 @@ function trigger(audio, count) {
     } else {
        audio.play();//normal
     }
+}
+
+function trigClap () {
+    clap = new Audio();
+    clap.src = 'samples/26_CLAP.wav'
+    clap.volume = 0.2;
+    clap.play();
 }
 
 function handleStartStop() {
@@ -147,19 +149,19 @@ function bindDrumKeys() {
     window.addEventListener("keydown", function() {
         switch (window.event.keyCode) {
             case 49:
-                trigger(kick);
+                trigger(sounds.kick);
                 break;
             case 50:
-                trigger(snare);
+                trigger(sounds.snare);
                 break;
             case 51:
-                trigger(clap);
+                trigClap(sounds.clap);
                 break;
             case 52:
-                trigger(clHat);
+                trigger(sounds.clHat);
                 break;
             case 53:
-                trigger(opHat);
+                trigger(sounds.opHat);
                 break;
         }
     });
@@ -178,11 +180,11 @@ function playSubdiv(count) {
         var buttons = rows[i].getElementsByClassName('simple-button');
         $(buttons).removeClass('on').eq(count).each(function(index, elt) {
             if (elt.className.match(/(^| )active( |$)/)) {
-                if (elt.className.match(/(^| )kick( |$)/)) trigger(kick, count);
-                else if (elt.className.match(/(^| )snare( |$)/)) trigger(snare, count);
-                else if (elt.className.match(/(^| )clhat( |$)/)) trigger(clHat, count);
-                else if (elt.className.match(/(^| )ophat( |$)/)) trigger(opHat, count);
-                else if (elt.className.match(/(^| )clap( |$)/)) trigger(clap, count);
+                if (elt.className.match(/(^| )kick( |$)/)) trigger(sounds.kick, count);
+                else if (elt.className.match(/(^| )snare( |$)/)) trigger(sounds.snare, count);
+                else if (elt.className.match(/(^| )clhat( |$)/)) trigger(sounds.clHat, count);
+                else if (elt.className.match(/(^| )ophat( |$)/)) trigger(sounds.opHat, count);
+                else if (elt.className.match(/(^| )clap( |$)/)) trigger(sounds.clap, count);
             }
             $(elt).addClass('on');
         });
