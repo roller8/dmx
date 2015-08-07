@@ -10,8 +10,8 @@ var sounds = {
     'snare': {'src': 'samples/06_SNARE_01.wav', 'volume': 1},
     'clap': {'src': 'samples/26_CLAP.wav', 'volume': 0.2},
     'clHat': {'src': 'samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2},
-    'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07},
-}
+    'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07}
+};
 
 function initAudioPlayer() {
     // set obj references
