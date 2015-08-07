@@ -5,7 +5,7 @@ var minuteToMil = 60000;
 var subdivision = 4;
 var interval    = Math.round((minuteToMil / tempo) / subdivision);
 var swing       = false;
-var monoAudio    = new Audio();
+var monoAudio   = new Audio();
 
 var sounds      = {
     'kick':     {'src': 'samples/03_BASS_01.wav',       'volume': 1   },
@@ -34,51 +34,28 @@ var pattern     = [
 ];
 
 function initAudioPlayer() {
-    // set obj references
-    var kickBtn     = $('.kick');
-    var snareBtn    = $('.snare');
-    var clapBtn     = $('.clap');
-    var clHatBtn    = $('.clhat');
-    var opHatBtn    = $('.ophat');
-
-    $startButton    = $('.start-stop').find('button');
-
-    kickBtn.each(function(i, elt) {
-        elt.addEventListener('click', function(e) {
-            $(e.currentTarget).toggleClass('active');
-            trigger(sounds.kick);
-        });
-    });
-    snareBtn.each(function(i, elt) {
-        elt.addEventListener('click', function(e) {
-            $(e.currentTarget).toggleClass('active');
-            trigger(sounds.snare);
-        });
-    });
-    clapBtn.each(function(i, elt) {
-        elt.addEventListener('click', function(e) {
-            $(e.currentTarget).toggleClass('active');
-            trigger(sounds.clap);
-        });
-    });
-    clHatBtn.each(function(i, elt) {
-        elt.addEventListener('click', function(e) {
-            $(e.currentTarget).toggleClass('active');
-            trigger(sounds.clHat);
-        });
-    });
-    opHatBtn.each(function(i, elt) {
-        elt.addEventListener('click', function(e) {
-            $(e.currentTarget).toggleClass('active');
-            trigger(sounds.opHat);
-        });
-    });
-
+    setObjReference();
     handleStartStop();
     handleVolInput();
     bindDrumKeys();
     togglePattern();
     handleSwing();
+}
+
+function setObjReference() {
+    $startButton    = $('.start-stop').find('button');
+
+    $('.simple-button').each(function(i, elt) {
+        elt.addEventListener('click', function(e) {
+            $(e.currentTarget).toggleClass('active');
+
+            if (elt.className.match(/(^| )kick( |$)/)) trigger(sounds.kick);
+            else if (elt.className.match(/(^| )snare( |$)/)) trigger(sounds.snare);
+            else if (elt.className.match(/(^| )clhat( |$)/)) trigger(sounds.clHat);
+            else if (elt.className.match(/(^| )ophat( |$)/)) trigger(sounds.opHat);
+            else if (elt.className.match(/(^| )clap( |$)/)) trigger(sounds.clap);
+        });
+    });
 }
 
 function handleSwing() {
