@@ -111,31 +111,6 @@ function togglePattern() {
     });
 }
 
-function trigger(sound, count) {
-    var audio       = new Audio();
-    audio.src       = sound.src;
-    audio.volume    = sound.volume;
-
-    if (swing && (count % 2 === 1)) {
-        setTimeout(function () {
-            playSound(audio); //delayed trigger
-        }, interval/(Math.random() * 3 + 2));
-    } else {
-       playSound(audio); //normal
-    }
-}
-
-function playSound(audio) {
-    var $glow = $('.glow');
-
-    audio.play();
-    $glow.removeClass('hide');
-
-    setTimeout(function () {
-        $glow.addClass('hide');
-    }, interval - 5);
-}
-
 function handleStartStop() {
     var count = 0;
 
@@ -164,6 +139,13 @@ function handleStartStop() {
             }, interval);
         }
     });
+}
+
+function handleTempo(init) {
+    var diff = new Date().getTime() - init;
+
+    tempo = $('.tempo').find('input').val();
+    interval = Math.round((minuteToMil / tempo) / subdivision - diff);
 }
 
 function handleVolInput() {
@@ -244,11 +226,29 @@ function triggerMono(sound, count) {
     playSound(monoAudio);
 }
 
-function handleTempo(init) {
-    var diff = new Date().getTime() - init;
+function trigger(sound, count) {
+    var audio       = new Audio();
+    audio.src       = sound.src;
+    audio.volume    = sound.volume;
 
-    tempo = $('.tempo').find('input').val();
-    interval = Math.round((minuteToMil / tempo) / subdivision - diff);
+    if (swing && (count % 2 === 1)) {
+        setTimeout(function () {
+            playSound(audio); //delayed trigger
+        }, interval/(Math.random() * 3 + 2));
+    } else {
+       playSound(audio); //normal
+    }
+}
+
+function playSound(audio) {
+    var $glow = $('.glow');
+
+    audio.play();
+    $glow.removeClass('hide');
+
+    setTimeout(function () {
+        $glow.addClass('hide');
+    }, interval - 5);
 }
 
 function playSubdiv(count) {
