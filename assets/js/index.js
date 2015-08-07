@@ -5,22 +5,22 @@ var subdivision = 4;
 var interval    = Math.round((minuteToMil/tempo)/subdivision);
 
 function initAudioPlayer () {
-    kick = new Audio();
-    snare = new Audio();
-    clHat = new Audio();
-    opHat = new Audio();
+    kick    = new Audio();
+    snare   = new Audio();
+    clHat   = new Audio();
+    opHat   = new Audio();
 
 
-    kick.src = 'samples/03_BASS_01.wav';
-    snare.src = 'samples/06_SNARE_01.wav';
-    clHat.src = 'samples/09_HI-HAT_CLOSED.wav';
-    opHat.src = 'samples/11_HI-HAT_OPEN.wav';
+    kick.src    = 'samples/03_BASS_01.wav';
+    snare.src   = 'samples/06_SNARE_01.wav';
+    clHat.src   = 'samples/09_HI-HAT_CLOSED.wav';
+    opHat.src   = 'samples/11_HI-HAT_OPEN.wav';
 
     // set obj references
-    kickBtn = $('.kick');
-    snareBtn = $('.snare');
-    clHatBtn = $('.clhat');
-    opHatBtn = $('.ophat');
+    kickBtn     = $('.kick');
+    snareBtn    = $('.snare');
+    clHatBtn    = $('.clhat');
+    opHatBtn    = $('.ophat');
 
     kickBtn.each(function(i, elt) {
         elt.addEventListener('click', function (e){
@@ -62,21 +62,20 @@ function handleStartStop() {
         $(e.currentTarget).toggleClass('active');
         handleTempo(init);
         if ($startButton.hasClass('active')) {
-            //playSubdiv(count);
-            dome();
+            loop();
         } else {
             clearTimeout(timer);
             count = 0;
             $('.simple-button').removeClass('on');
         }
-        function dome() {
+        function loop() {
             timer = setTimeout(function () {
                 var init2 = new Date().getTime();
+                if (count === subdivision * 4) count = 0;
                 playSubdiv(count);
                 handleTempo(init2);
-                if (count >= subdivision * 4) count = 0;
-                else count++;
-                dome();
+                count++;
+                loop();
             }, interval);
         }
     });
