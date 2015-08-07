@@ -19,7 +19,8 @@ var sounds      = {
     'woo': {'src': 'samples/woo.wav', 'volume': 0.4},
     'hiTom': {'src': 'samples/12_TOM_01.wav', 'volume': 0.3},
     'midTom': {'src': 'samples/14_TOM_03.wav', 'volume': 0.3},
-    'loTom': {'src': 'samples/17_TOM_06.wav', 'volume': 0.3}
+    'loTom': {'src': 'samples/17_TOM_06.wav', 'volume': 0.3},
+    'cowbell': {'src': 'samples/808cowbell.wav', 'volume': 0.5}
 
 };
 
@@ -204,7 +205,7 @@ function bindDrumKeys() {
                 trigger(sounds.clap);
                 break;
             case 52:
-                trigger(sounds.clHat);
+                trigger(sounds.cowbell);
                 break;
             case 53:
                 trigger(sounds.hiTom);
