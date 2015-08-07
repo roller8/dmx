@@ -74,13 +74,13 @@
     width: inherit;
     text-align: center;
 }
-.clear-pattern {
+.toggle-pattern {
     float: left;
     margin-left: 225px;
 }
 .swing {
     float: left;
-    margin-left: 28px;
+    margin-left: 55px;
 }
 
 .tempo {

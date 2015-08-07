@@ -70,8 +70,7 @@ function initAudioPlayer() {
     handleStartStop();
     handleVolInput();
     bindDrumKeys();
-    loadPattern();
-    clearPattern();
+    togglePattern();
     handleSwing();
 }
 
@@ -92,9 +91,15 @@ function loadPattern() {
     });
 }
 
-function clearPattern() {
-    $('.clear-pattern').on('click', 'button', function () {
-        $('.row').find('button').removeClass('active');
+function togglePattern() {
+    $('.toggle-pattern').on('click', 'button', function () {
+        var $this = $(this);
+        $this.toggleClass('active');
+        if ($this.hasClass('active')) {
+            loadPattern();
+        } else {
+            $('.row').find('button').removeClass('active');
+        }
     });
 }
 
@@ -115,7 +120,10 @@ function trigger(sound, count) {
 function playSound(audio) {
     var $glow = $('.glow');
     audio.play();
-    $glow.toggleClass('hide');
+    $glow.removeClass('hide');
+    setTimeout(function () {
+        $glow.addClass('hide');
+    }, interval - 5);
 }
 
 function handleStartStop() {
