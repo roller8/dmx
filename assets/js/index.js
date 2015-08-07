@@ -60,6 +60,7 @@ function initAudioPlayer() {
     });
 
     handleStartStop();
+    handleVolInput();
 }
 
 function trigger(audio) {
@@ -92,6 +93,44 @@ function handleStartStop() {
             }, interval);
         }
     });
+}
+
+function handleVolInput() {
+    var $input = $('.tempo').find('input');
+    $input.on('focus', function () {
+        console.log('focus');
+        document.onkeydown = checkKey;
+    }).on('blur', function () {
+        console.log('blur');
+    });
+}
+function checkKey(e) {
+
+    e = e || window.event;
+    var $input = $('.tempo').find('input');
+    var volume = Number($input.val());
+
+    if (e.keyCode == '38') {
+        // up arrow
+        console.log('up arrow');
+        tempo = volume + 1;
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+        console.log('down arrow');
+        tempo = volume - 1;
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+       console.log('left arrow');
+       tempo = volume - 1;
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+       console.log('right arrow');
+       tempo = volume + 1;
+    }
+    $input.val(tempo);
 }
 
 function handleTempo(init) {
