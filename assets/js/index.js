@@ -1,4 +1,5 @@
-var timer, $startButton;
+var timer;
+var $startButton;
 var tempo       = 60;
 var minuteToMil = 60000;
 var subdivision = 4;
@@ -21,7 +22,6 @@ var sounds      = {
     'midTom':   {'src': 'samples/14_TOM_03.wav',        'volume': 0.3 },
     'loTom':    {'src': 'samples/17_TOM_06.wav',        'volume': 0.3 },
     'cowbell':  {'src': 'samples/808cowbell.wav',       'volume': 0.5 }
-
 };
 
 var pattern     = [
@@ -39,6 +39,8 @@ function initAudioPlayer() {
     var clapBtn     = $('.clap');
     var clHatBtn    = $('.clhat');
     var opHatBtn    = $('.ophat');
+
+    $startButton    = $('.start-stop').find('button');
 
     kickBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
@@ -124,6 +126,7 @@ function trigger(sound, count) {
 
 function playSound(audio) {
     var $glow = $('.glow');
+
     audio.play();
     $glow.removeClass('hide');
 
@@ -133,8 +136,8 @@ function playSound(audio) {
 }
 
 function handleStartStop() {
-    $startButton = $('.start-stop').find('button');
     var count = 0;
+
     $startButton.on('click', function(e) {
         var init = new Date().getTime();
         $(e.currentTarget).toggleClass('active');
@@ -165,8 +168,8 @@ function handleStartStop() {
 function handleVolInput() {
     document.onkeydown = checkKey;
 }
-function checkKey(e) {
 
+function checkKey(e) {
     e = e || window.event;
     var $input = $('.tempo').find('input');
     var volume = Number($input.val());
@@ -235,6 +238,7 @@ function bindDrumKeys() {
 
 function handleTempo(init) {
     var diff = new Date().getTime() - init;
+
     tempo = $('.tempo').find('input').val();
     interval = Math.round((minuteToMil / tempo) / subdivision - diff);
 }

@@ -2,32 +2,32 @@
   /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
   html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
- section {
+section {
     background: url(../../images/main.jpg) no-repeat;
     width: 820px;
     height: 560px;
     margin: 0 auto;
     padding-top: 170px;
+    margin-top: 80px;
     position: relative;
- }
- .row.one,
- .row.two,
- .row.three,
- .row.four,
- .row.five {
-    margin: 0 0 8px 75px;
- }
+}
 
- .row > span {
+.row.one,
+.row.two,
+.row.three,
+.row.four,
+.row.five { margin: 0 0 8px 75px; }
+
+.row > span {
     display: inline-block;
     color: #fff;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10px;
     line-height: 33px;
     width: 44px;
- }
+}
 
- .simple-button {
+.simple-button {
     border: none;
     background: url(../../images/simple-button.jpg) no-repeat;
     width: 33px;
@@ -35,19 +35,17 @@
     overflow: hidden;
     text-indent: 120%;
     white-space: nowrap;
- }
- .simple-button.active {
-    background: url(../../images/simple-button-active.jpg) no-repeat;
- }
-.simple-button.on {
-    border: 1px solid red;
 }
- .simple-button:nth-of-type(4n+1),
- .simple-button:nth-of-type(4n+1),
- .simple-button:nth-of-type(4n+1),
- .simple-button:nth-of-type(4n+1) {
-    margin-left: 12px;
- }
+
+.simple-button.active { background: url(../../images/simple-button-active.jpg) no-repeat; }
+
+.simple-button.on { border: 1px solid red; }
+
+.simple-button:nth-of-type(4n+1),
+.simple-button:nth-of-type(4n+1),
+.simple-button:nth-of-type(4n+1),
+.simple-button:nth-of-type(4n+1) {  margin-left: 12px; }
+
 .start-stop,
 .swing {
     width: 100px;
@@ -64,9 +62,9 @@
     white-space: nowrap;
     margin: 8px auto;
 }
-.top-btn button.active {
-    background: url(../../images/start-stop-active.jpg) no-repeat center top;
-}
+
+.top-btn button.active { background: url(../../images/start-stop-active.jpg) no-repeat center top; }
+
 .top-btn span {
     display: block;
     color: #fff;
@@ -75,10 +73,12 @@
     width: inherit;
     text-align: center;
 }
+
 .toggle-pattern {
     float: left;
     margin-left: 225px;
 }
+
 .swing {
     float: left;
     margin-left: 55px;
@@ -89,6 +89,7 @@
     width: 127px;
     margin: 16px 73px 0 0;
 }
+
 .tempo input {
     background: none;
     border: none;
@@ -97,6 +98,7 @@
     width: inherit;
     text-align: right;
 }
+
 .tempo label {
     display: block;
     color: #fff;
@@ -106,6 +108,7 @@
     text-align: center;
     margin-top: 16px;
 }
+
 .glow {
     position: absolute;
     width: 33px;
