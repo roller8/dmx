@@ -5,6 +5,7 @@ var minuteToMil = 60000;
 var subdivision = 4;
 var interval    = Math.round((minuteToMil / tempo) / subdivision);
 var swing       = false;
+var monoAudio    = new Audio();
 
 var sounds      = {
     'kick':     {'src': 'samples/03_BASS_01.wav',       'volume': 1   },
@@ -221,19 +222,26 @@ function bindDrumKeys() {
                 trigger(sounds.loTom);
                 break;
             case 56:
-                trigger(sounds.yeah);
+                triggerMono(sounds.yeah);
                 break;
             case 57:
-                trigger(sounds.oww);
+                triggerMono(sounds.oww);
                 break;
             case 48:
-                trigger(sounds.woo);
+                triggerMono(sounds.woo);
                 break;
             case 32:
                 $startButton.click();
                 break;
         }
     });
+}
+
+function triggerMono(sound, count) {
+    monoAudio.src       = sound.src;
+    monoAudio.volume    = sound.volume;
+
+    playSound(monoAudio);
 }
 
 function handleTempo(init) {
