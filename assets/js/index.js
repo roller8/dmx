@@ -16,7 +16,10 @@ var sounds      = {
     'check': {'src': 'samples/checkthisout.wav', 'volume': 0.4},
     'here': {'src': 'samples/herewego.wav', 'volume': 0.4},
     'oww': {'src': 'samples/oww.wav', 'volume': 0.4},
-    'woo': {'src': 'samples/woo.wav', 'volume': 0.4}
+    'woo': {'src': 'samples/woo.wav', 'volume': 0.4},
+    'hiTom': {'src': 'samples/12_TOM_01.wav', 'volume': 0.7},
+    'midTom': {'src': 'samples/14_TOM_03.wav', 'volume': 0.7},
+    'loTom': {'src': 'samples/17_TOM_06.wav', 'volume': 0.7}
 
 };
 
@@ -204,16 +207,16 @@ function bindDrumKeys() {
                 trigger(sounds.clHat);
                 break;
             case 53:
-                trigger(sounds.yeah);
+                trigger(sounds.hiTom);
                 break;
             case 54:
-                trigger(sounds.feel);
+                trigger(sounds.midTom);
                 break;
             case 55:
-                trigger(sounds.check);
+                trigger(sounds.loTom);
                 break;
             case 56:
-                trigger(sounds.here);
+                trigger(sounds.yeah);
                 break;
             case 57:
                 trigger(sounds.oww);
