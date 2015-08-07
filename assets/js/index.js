@@ -17,9 +17,9 @@ var sounds      = {
     'here': {'src': 'samples/herewego.wav', 'volume': 0.4},
     'oww': {'src': 'samples/oww.wav', 'volume': 0.4},
     'woo': {'src': 'samples/woo.wav', 'volume': 0.4},
-    'hiTom': {'src': 'samples/12_TOM_01.wav', 'volume': 0.7},
-    'midTom': {'src': 'samples/14_TOM_03.wav', 'volume': 0.7},
-    'loTom': {'src': 'samples/17_TOM_06.wav', 'volume': 0.7}
+    'hiTom': {'src': 'samples/12_TOM_01.wav', 'volume': 0.3},
+    'midTom': {'src': 'samples/14_TOM_03.wav', 'volume': 0.3},
+    'loTom': {'src': 'samples/17_TOM_06.wav', 'volume': 0.3}
 
 };
 
