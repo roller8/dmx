@@ -8,6 +8,7 @@
     height: 560px;
     margin: 0 auto;
     padding-top: 170px;
+    position: relative;
  }
  .row.one,
  .row.two,
@@ -111,7 +112,7 @@
     height: 19px;
     background-color: rgba(255,0,0, 0.2);
     top: 38px;
-    right: 135px;
+    right: 80px;
     box-shadow: 0 0 23px rgba(255,0,0,1);
 }
 .hide { display: none; }

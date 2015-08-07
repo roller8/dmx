@@ -92,6 +92,7 @@ function loadPattern() {
 }
 
 function togglePattern() {
+    loadPattern();
     $('.toggle-pattern').on('click', 'button', function () {
         var $this = $(this);
         $this.toggleClass('active');
@@ -220,7 +221,7 @@ function bindDrumKeys() {
             case 48:
                 trigger(sounds.woo);
                 break;
-            case 32:9
+            case 32:
                 $startButton.click();
                 break;
         }
