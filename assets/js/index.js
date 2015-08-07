@@ -1,5 +1,5 @@
 var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn, timer;
-var tempo       = 120;
+var tempo       = 60;
 var minuteToMil = 60000;
 var subdivision = 4;
 var interval    = Math.round((minuteToMil/tempo)/subdivision);
@@ -55,33 +55,54 @@ function trigger (audio) {
 }
 
 function handleStartStop() {
-    var $startButton = $('.start-stop').find('button');
-    var count = 0;
+    var $startButton    = $('.start-stop').find('button');
+    var count           = 0;
     $startButton.on('click', function (e) {
+        var init = new Date().getTime();
         $(e.currentTarget).toggleClass('active');
+        handleTempo(init);
         if ($startButton.hasClass('active')) {
             playSubdiv(count);
-            timer = setInterval(function () {
+            dome();
+        } else {
+            clearTimeout(timer);
+            count = 0;
+            $('.simple-button').removeClass('on');
+        }
+        function dome() {
+            timer = setTimeout(function () {
+                var init2 = new Date().getTime();
                 if (count > subdivision * 4) count = 0;
                 playSubdiv(count);
+                handleTempo(init2);
                 count++;
+                dome();
             }, interval);
-        } else {
-            clearInterval(timer);
         }
     });
-    
 }
+
+function handleTempo(init) {
+    var diff = new Date().getTime() - init;
+    tempo    = $('.tempo').find('input').val();
+    interval = Math.round((minuteToMil/tempo)/subdivision) - diff;
+}
+
 function playSubdiv(count) {
-    $('.row').each(function(i, elt){
-        $(elt).find('.simple-button').eq(count).each(function (ii, elt2) {
-            if ($(elt2).hasClass('active')) {
-                if ($(elt2).hasClass('kick')) trigger(kick);
-                if ($(elt2).hasClass('snare')) trigger(snare);
-                if ($(elt2).hasClass('clhat')) trigger(clHat);
-                if ($(elt2).hasClass('ophat')) trigger(opHat);
+    var rows = document.getElementsByClassName('row');
+
+    for (var i = 0; i < rows.length; i++) {
+        var buttons = rows[i].getElementsByClassName('simple-button');
+        $(buttons).removeClass('on').eq(count).each(function (index, elt) {
+            if (elt.className.match(/(^| )active( |$)/)) {
+                if (elt.className.match(/(^| )kick( |$)/)) trigger(kick);
+                else if (elt.className.match(/(^| )snare( |$)/)) trigger(snare);
+                else if (elt.className.match(/(^| )clhat( |$)/)) trigger(clHat);
+                else if (elt.className.match(/(^| )ophat( |$)/)) trigger(opHat);
             }
+            $(elt).addClass('on');
         });
-    });
+    }
 }
+
 window.addEventListener("load", initAudioPlayer);
