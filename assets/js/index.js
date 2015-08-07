@@ -1,4 +1,4 @@
-var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn, clap, clapBtn, timer;
+var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn, clap, clapBtn, timer, $startButton;
 var tempo       = 60;
 var minuteToMil = 60000;
 var subdivision = 4;
@@ -10,7 +10,14 @@ var sounds      = {
     'snare': {'src': 'samples/06_SNARE_01.wav', 'volume': 1},
     'clap': {'src': 'samples/26_CLAP.wav', 'volume': 0.1},
     'clHat': {'src': 'samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2},
-    'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07}
+    'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07},
+    'yeah': {'src': 'samples/awyeah.wav', 'volume': 0.4},
+    'feel': {'src': 'samples/canyoufeelit.wav', 'volume': 0.4},
+    'check': {'src': 'samples/checkthisout.wav', 'volume': 0.4},
+    'here': {'src': 'samples/herewego.wav', 'volume': 0.4},
+    'oww': {'src': 'samples/oww.wav', 'volume': 0.4},
+    'woo': {'src': 'samples/woo.wav', 'volume': 0.4}
+
 };
 
 var pattern     = [
@@ -112,7 +119,7 @@ function playSound(audio) {
 }
 
 function handleStartStop() {
-    var $startButton = $('.start-stop').find('button');
+    $startButton = $('.start-stop').find('button');
     var count = 0;
     $startButton.on('click', function(e) {
         var init = new Date().getTime();
@@ -191,7 +198,25 @@ function bindDrumKeys() {
                 trigger(sounds.clHat);
                 break;
             case 53:
-                trigger(sounds.opHat);
+                trigger(sounds.yeah);
+                break;
+            case 54:
+                trigger(sounds.feel);
+                break;
+            case 55:
+                trigger(sounds.check);
+                break;
+            case 56:
+                trigger(sounds.here);
+                break;
+            case 57:
+                trigger(sounds.oww);
+                break;
+            case 48:
+                trigger(sounds.woo);
+                break;
+            case 32:9
+                $startButton.click();
                 break;
         }
     });
