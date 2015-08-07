@@ -18,6 +18,7 @@ function initAudioPlayer() {
     clHat.src = 'samples/09_HI-HAT_CLOSED.wav';
     opHat.src = 'samples/11_HI-HAT_OPEN.wav';
 
+    clap.volume = 0.2;
     clHat.volume = 0.2;
     opHat.volume = 0.07;
 
@@ -150,6 +151,7 @@ function playSubdiv(count) {
                 else if (elt.className.match(/(^| )snare( |$)/)) trigger(snare);
                 else if (elt.className.match(/(^| )clhat( |$)/)) trigger(clHat);
                 else if (elt.className.match(/(^| )ophat( |$)/)) trigger(opHat);
+                else if (elt.className.match(/(^| )clap( |$)/)) trigger(clap);
             }
             $(elt).addClass('on');
         });
