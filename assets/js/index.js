@@ -1,11 +1,11 @@
 var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn, clap, clapBtn, timer;
-var tempo = 60;
+var tempo       = 60;
 var minuteToMil = 60000;
 var subdivision = 4;
-var interval = Math.round((minuteToMil / tempo) / subdivision);
-var swing = false;
+var interval    = Math.round((minuteToMil / tempo) / subdivision);
+var swing       = false;
 
-var sounds = {
+var sounds      = {
     'kick': {'src': 'samples/03_BASS_01.wav', 'volume': 1},
     'snare': {'src': 'samples/06_SNARE_01.wav', 'volume': 1},
     'clap': {'src': 'samples/26_CLAP.wav', 'volume': 0.1},
@@ -13,7 +13,7 @@ var sounds = {
     'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07}
 };
 
-var pattern = [
+var pattern     = [
     {'name': 'kick',    'seq': [1,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0]},
     {'name': 'snare',   'seq': [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0]},
     {'name': 'clap',    'seq': [0,0,0,0,1,1,0,0,1,0,0,1,0,0,1,0]},
@@ -23,11 +23,11 @@ var pattern = [
 
 function initAudioPlayer() {
     // set obj references
-    kickBtn = $('.kick');
-    snareBtn = $('.snare');
-    clapBtn = $('.clap');
-    clHatBtn = $('.clhat');
-    opHatBtn = $('.ophat');
+    kickBtn     = $('.kick');
+    snareBtn    = $('.snare');
+    clapBtn     = $('.clap');
+    clHatBtn    = $('.clhat');
+    opHatBtn    = $('.ophat');
 
     kickBtn.each(function(i, elt) {
         elt.addEventListener('click', function(e) {
@@ -82,17 +82,23 @@ function loadPattern() {
 }
 
 function trigger(sound, count) {
-    var audio = new Audio();
-    audio.src = sound.src;
-    audio.volume = sound.volume;
+    var audio       = new Audio();
+    audio.src       = sound.src;
+    audio.volume    = sound.volume;
 
     if (swing && (count % 2 === 1)) {
         setTimeout(function () {
-            audio.play();//delayed trigger
+            playSound(audio);//delayed trigger
         }, interval/(Math.random() * 10 + 3));
     } else {
-       audio.play();//normal
+       playSound(audio);//normal
     }
+}
+
+function playSound(audio) {
+    var $glow = $('.glow');
+    audio.play();
+    $glow.toggleClass('hide');
 }
 
 function handleStartStop() {
@@ -103,10 +109,12 @@ function handleStartStop() {
         $(e.currentTarget).toggleClass('active');
         handleTempo(init);
         if ($startButton.hasClass('active')) {
+            $('.glow').removeClass('hide');
             loop();
         } else {
             clearTimeout(timer);
             count = 0;
+            $('.glow').addClass('hide');
             $('.simple-button').removeClass('on');
         }
 
@@ -190,7 +198,7 @@ function playSubdiv(count) {
 
     for (var i = 0; i < rows.length; i++) {
         var buttons = rows[i].getElementsByClassName('simple-button');
-        $(buttons).removeClass('on').eq(count).each(function(index, elt) {
+        $(buttons).removeClass('on').eq(count).each(function (index, elt) {
             if (elt.className.match(/(^| )active( |$)/)) {
                 if (elt.className.match(/(^| )kick( |$)/)) trigger(sounds.kick, count);
                 else if (elt.className.match(/(^| )snare( |$)/)) trigger(sounds.snare, count);
