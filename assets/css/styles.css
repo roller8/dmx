@@ -47,11 +47,13 @@
  .simple-button:nth-of-type(4n+1) {
     margin-left: 12px;
  }
-.start-stop {
+.start-stop,
+.swing {
     width: 100px;
     margin: 0 0 20px 458px;
 }
-.start-stop button {
+.start-stop button,
+.swing button {
     display: block;
     border: none;
     background: url(../../images/start-stop.jpg) no-repeat center top;
@@ -62,10 +64,12 @@
     white-space: nowrap;
     margin: 8px auto;
 }
-.start-stop button.active {
+.start-stop button.active,
+.swing button.active {
     background: url(../../images/start-stop-active.jpg) no-repeat center top;
 }
-.start-stop span {
+.start-stop span,
+.swing span {
     display: block;
     color: #fff;
     font-family: Helvetica, Arial, sans-serif;
@@ -73,6 +77,11 @@
     width: inherit;
     text-align: center;
 }
+.swing {
+    float: left;
+    margin-left: 334px;
+}
+
 .tempo {
     float: right;
     width: 127px;

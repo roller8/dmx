@@ -3,6 +3,7 @@ var tempo = 60;
 var minuteToMil = 60000;
 var subdivision = 4;
 var interval = Math.round((minuteToMil / tempo) / subdivision);
+var swing = false;
 
 function initAudioPlayer() {
     kick = new Audio();
@@ -62,10 +63,21 @@ function initAudioPlayer() {
 
     handleStartStop();
     handleVolInput();
+
+    $('.swing').on('click', 'button', function () {
+        $(this).toggleClass('active');
+        swing = !swing;
+    });
 }
 
-function trigger(audio) {
-    audio.play();
+function trigger(audio, count) {
+    if (swing && (count % 2 === 1)) {
+        setTimeout(function () {
+            audio.play();//delayed trigger
+        }, interval/(Math.random() * 10 + 3));
+    } else {
+       audio.play();//normal
+    }
 }
 
 function handleStartStop() {
@@ -99,10 +111,7 @@ function handleStartStop() {
 function handleVolInput() {
     var $input = $('.tempo').find('input');
     $input.on('focus', function () {
-        console.log('focus');
         document.onkeydown = checkKey;
-    }).on('blur', function () {
-        console.log('blur');
     });
 }
 function checkKey(e) {
@@ -113,25 +122,24 @@ function checkKey(e) {
 
     if (e.keyCode == '38') {
         // up arrow
-        console.log('up arrow');
         tempo = volume + 1;
+        $input.val(tempo);
     }
     else if (e.keyCode == '40') {
         // down arrow
-        console.log('down arrow');
         tempo = volume - 1;
+        $input.val(tempo);
     }
     else if (e.keyCode == '37') {
        // left arrow
-       console.log('left arrow');
        tempo = volume - 1;
+       $input.val(tempo);
     }
     else if (e.keyCode == '39') {
        // right arrow
-       console.log('right arrow');
        tempo = volume + 1;
+       $input.val(tempo);
     }
-    $input.val(tempo);
 }
 
 function handleTempo(init) {
@@ -147,11 +155,11 @@ function playSubdiv(count) {
         var buttons = rows[i].getElementsByClassName('simple-button');
         $(buttons).removeClass('on').eq(count).each(function(index, elt) {
             if (elt.className.match(/(^| )active( |$)/)) {
-                if (elt.className.match(/(^| )kick( |$)/)) trigger(kick);
-                else if (elt.className.match(/(^| )snare( |$)/)) trigger(snare);
-                else if (elt.className.match(/(^| )clhat( |$)/)) trigger(clHat);
-                else if (elt.className.match(/(^| )ophat( |$)/)) trigger(opHat);
-                else if (elt.className.match(/(^| )clap( |$)/)) trigger(clap);
+                if (elt.className.match(/(^| )kick( |$)/)) trigger(kick, count);
+                else if (elt.className.match(/(^| )snare( |$)/)) trigger(snare, count);
+                else if (elt.className.match(/(^| )clhat( |$)/)) trigger(clHat, count);
+                else if (elt.className.match(/(^| )ophat( |$)/)) trigger(opHat, count);
+                else if (elt.className.match(/(^| )clap( |$)/)) trigger(clap, count);
             }
             $(elt).addClass('on');
         });
