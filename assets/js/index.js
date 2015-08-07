@@ -1,50 +1,59 @@
-var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn, timer;
-var tempo       = 60;
+var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn, clap, clapBtn, timer;
+var tempo = 60;
 var minuteToMil = 60000;
 var subdivision = 4;
-var interval    = Math.round((minuteToMil/tempo)/subdivision);
+var interval = Math.round((minuteToMil / tempo) / subdivision);
 
-function initAudioPlayer () {
-    kick    = new Audio();
-    snare   = new Audio();
-    clHat   = new Audio();
-    opHat   = new Audio();
+function initAudioPlayer() {
+    kick = new Audio();
+    snare = new Audio();
+    clap = new Audio();
+    clHat = new Audio();
+    opHat = new Audio();
 
 
-    kick.src    = 'samples/03_BASS_01.wav';
-    snare.src   = 'samples/06_SNARE_01.wav';
-    clHat.src   = 'samples/09_HI-HAT_CLOSED.wav';
-    opHat.src   = 'samples/11_HI-HAT_OPEN.wav';
+    kick.src = 'samples/03_BASS_01.wav';
+    snare.src = 'samples/06_SNARE_01.wav';
+    clap.src = 'samples/26_CLAP.wav'
+    clHat.src = 'samples/09_HI-HAT_CLOSED.wav';
+    opHat.src = 'samples/11_HI-HAT_OPEN.wav';
 
     clHat.volume = 0.2;
     opHat.volume = 0.07;
 
     // set obj references
-    kickBtn     = $('.kick');
-    snareBtn    = $('.snare');
-    clHatBtn    = $('.clhat');
-    opHatBtn    = $('.ophat');
+    kickBtn = $('.kick');
+    snareBtn = $('.snare');
+    clapBtn = $('.clap');
+    clHatBtn = $('.clhat');
+    opHatBtn = $('.ophat');
 
     kickBtn.each(function(i, elt) {
-        elt.addEventListener('click', function (e){
+        elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
             trigger(kick);
         });
     });
     snareBtn.each(function(i, elt) {
-        elt.addEventListener('click', function (e){
+        elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
             trigger(snare);
         });
     });
+    clapBtn.each(function(i, elt) {
+        elt.addEventListener('click', function(e) {
+            $(e.currentTarget).toggleClass('active');
+            trigger(clap);
+        });
+    });
     clHatBtn.each(function(i, elt) {
-        elt.addEventListener('click', function (e){
+        elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
             trigger(clHat);
         });
     });
     opHatBtn.each(function(i, elt) {
-        elt.addEventListener('click', function (e){
+        elt.addEventListener('click', function(e) {
             $(e.currentTarget).toggleClass('active');
             trigger(opHat);
         });
@@ -53,14 +62,14 @@ function initAudioPlayer () {
     handleStartStop();
 }
 
-function trigger (audio) {
+function trigger(audio) {
     audio.play();
 }
 
 function handleStartStop() {
-    var $startButton    = $('.start-stop').find('button');
-    var count           = 0;
-    $startButton.on('click', function (e) {
+    var $startButton = $('.start-stop').find('button');
+    var count = 0;
+    $startButton.on('click', function(e) {
         var init = new Date().getTime();
         $(e.currentTarget).toggleClass('active');
         handleTempo(init);
@@ -71,8 +80,9 @@ function handleStartStop() {
             count = 0;
             $('.simple-button').removeClass('on');
         }
+
         function loop() {
-            timer = setTimeout(function () {
+            timer = setTimeout(function() {
                 var init2 = new Date().getTime();
                 if (count === subdivision * 4) count = 0;
                 playSubdiv(count);
@@ -86,8 +96,8 @@ function handleStartStop() {
 
 function handleTempo(init) {
     var diff = new Date().getTime() - init;
-    tempo    = $('.tempo').find('input').val();
-    interval = Math.round((minuteToMil/tempo)/subdivision - diff);
+    tempo = $('.tempo').find('input').val();
+    interval = Math.round((minuteToMil / tempo) / subdivision - diff);
 }
 
 function playSubdiv(count) {
@@ -95,7 +105,7 @@ function playSubdiv(count) {
 
     for (var i = 0; i < rows.length; i++) {
         var buttons = rows[i].getElementsByClassName('simple-button');
-        $(buttons).removeClass('on').eq(count).each(function (index, elt) {
+        $(buttons).removeClass('on').eq(count).each(function(index, elt) {
             if (elt.className.match(/(^| )active( |$)/)) {
                 if (elt.className.match(/(^| )kick( |$)/)) trigger(kick);
                 else if (elt.className.match(/(^| )snare( |$)/)) trigger(snare);
