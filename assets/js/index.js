@@ -126,38 +126,37 @@ function handleTempo(init) {
 }
 
 function handleVolInput() {
-    document.onkeydown = checkKey;
-}
+    document.onkeydown = function (e) {
+        e = e || window.event;
 
-function checkKey(e) {
-    e = e || window.event;
-    var $input = $('.tempo').find('input');
-    var volume = Number($input.val());
+        var $input = $('.tempo').find('input');
+        var volume = Number($input.val());
 
-    if (e.keyCode == '38') {
-        // up arrow
-        tempo = volume + 1;
-        $input.val(tempo);
-    }
-    else if (e.keyCode == '40') {
-        // down arrow
-        tempo = volume - 1;
-        $input.val(tempo);
-    }
-    else if (e.keyCode == '37') {
-       // left arrow
-       tempo = volume - 1;
-       $input.val(tempo);
-    }
-    else if (e.keyCode == '39') {
-       // right arrow
-       tempo = volume + 1;
-       $input.val(tempo);
-    }
+        switch (e.keyCode) {
+            case 38: // up arrow
+                tempo = volume + 1;
+                $input.val(tempo);
+                break;
+            case 40: // down arrow
+                tempo = volume - 1;
+                $input.val(tempo);
+                break;
+            case 37: // left arrow
+               tempo = volume - 1;
+               $input.val(tempo);
+               break;
+            case 39:  // right arrow
+               tempo = volume + 1;
+               $input.val(tempo);
+               break;
+        }
+    };
 }
 
 function bindDrumKeys() {
     window.addEventListener("keydown", function() {
+        if ($('.tempo input').is(':focus')) return;
+
         switch (window.event.keyCode) {
             case 49:
                 trigger(sounds.kick);
