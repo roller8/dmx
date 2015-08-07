@@ -157,10 +157,7 @@ function handleStartStop() {
 }
 
 function handleVolInput() {
-    var $input = $('.tempo').find('input');
-    $input.on('focus', function () {
-        document.onkeydown = checkKey;
-    });
+    document.onkeydown = checkKey;
 }
 function checkKey(e) {
 
