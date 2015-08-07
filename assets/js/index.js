@@ -13,6 +13,14 @@ var sounds = {
     'opHat': {'src': 'samples/11_HI-HAT_OPEN.wav', 'volume': 0.07},
 }
 
+var pattern = {
+    'kick':     [1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0],
+    'snare':    [0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0],
+    'clap':     [0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0],
+    'clHat':    [1,0,1,0,1,0,1,0,0,1,0,1,1,0,1,0],
+    'opHat':    [0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1]
+}
+
 function initAudioPlayer() {
     // set obj references
     kickBtn = $('.kick');
