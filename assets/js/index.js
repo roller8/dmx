@@ -89,7 +89,7 @@ function trigger(sound, count) {
     if (swing && (count % 2 === 1)) {
         setTimeout(function () {
             playSound(audio);//delayed trigger
-        }, interval/(Math.random() * 10 + 3));
+        }, interval/(Math.random() * 3 + 2));
     } else {
        playSound(audio);//normal
     }
