@@ -48,7 +48,7 @@
     width: 100px;
     margin: 0 0 21px 458px;
 }
- .start-stop button {
+.start-stop button {
     display: block;
     border: none;
     background: url(../../images/start-stop.jpg) no-repeat center top;
@@ -58,7 +58,10 @@
     text-indent: 120%;
     white-space: nowrap;
     margin: 8px auto;
- }
+}
+.start-stop button.active {
+    background: url(../../images/start-stop-active.jpg) no-repeat center top;
+}
 .start-stop span {
     display: block;
     color: #fff;

@@ -3,59 +3,7 @@
 <head>
     <title>DMX</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript">
-        var kick, kickBtn, snare, snareBtn, clHat, clHatBtn, opHat, opHatBtn;
-
-        function initAudioPlayer () {
-            kick = new Audio();
-            snare = new Audio();
-            clHat = new Audio();
-            opHat = new Audio();
-
-
-            kick.src = 'samples/03_BASS_01.wav';
-            snare.src = 'samples/06_SNARE_01.wav';
-            clHat.src = 'samples/09_HI-HAT_CLOSED.wav';
-            opHat.src = 'samples/11_HI-HAT_OPEN.wav';
-
-            // set obj references
-            kickBtn = $('.kick');
-            snareBtn = $('.snare');
-            clHatBtn = $('.clhat');
-            opHatBtn = $('.ophat');
-
-            kickBtn.each(function(i, elt) {
-                elt.addEventListener('click', function (e){
-                    $(e.currentTarget).toggleClass('active');
-                    trigger(kick)
-                });
-            });
-            snareBtn.each(function(i, elt) {
-                elt.addEventListener('click', function (e){
-                    $(e.currentTarget).toggleClass('active');
-                    trigger(snare)
-                });
-            });
-            clHatBtn.each(function(i, elt) {
-                elt.addEventListener('click', function (e){
-                    $(e.currentTarget).toggleClass('active');
-                    trigger(clHat)
-                });
-            });
-            opHatBtn.each(function(i, elt) {
-                elt.addEventListener('click', function (e){
-                    $(e.currentTarget).toggleClass('active');
-                    trigger(opHat)
-                });
-            });
-        }
-
-        function trigger (audio) {
-            audio.play();
-        }
-
-        window.addEventListener("load", initAudioPlayer);
-    </script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
     <link rel='stylesheet' href='assets/css/styles.css' type='text/css'/>
 </head>
 <body>
