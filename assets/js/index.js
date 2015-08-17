@@ -8,21 +8,21 @@ var swing       = false;
 var monoAudio   = new Audio();
 
 var sounds      = {
-    'kick':     {'src': 'samples/03_BASS_01.wav',       'volume': 1   },
-    'snare':    {'src': 'samples/06_SNARE_01.wav',      'volume': 1   },
-    'clap':     {'src': 'samples/26_CLAP.wav',          'volume': 0.1 },
-    'clHat':    {'src': 'samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2 },
-    'opHat':    {'src': 'samples/11_HI-HAT_OPEN.wav',   'volume': 0.07},
-    'yeah':     {'src': 'samples/awyeah.wav',           'volume': 0.4 },
-    'feel':     {'src': 'samples/canyoufeelit.wav',     'volume': 0.4 },
-    'check':    {'src': 'samples/checkthisout.wav',     'volume': 0.4 },
-    'here':     {'src': 'samples/herewego.wav',         'volume': 0.4 },
-    'oww':      {'src': 'samples/oww.wav',              'volume': 0.4 },
-    'woo':      {'src': 'samples/woo.wav',              'volume': 0.4 },
-    'hiTom':    {'src': 'samples/12_TOM_01.wav',        'volume': 0.3 },
-    'midTom':   {'src': 'samples/14_TOM_03.wav',        'volume': 0.3 },
-    'loTom':    {'src': 'samples/17_TOM_06.wav',        'volume': 0.3 },
-    'cowbell':  {'src': 'samples/808cowbell.wav',       'volume': 0.5 }
+    'kick':     {'src': 'assets/samples/03_BASS_01.wav',       'volume': 1   },
+    'snare':    {'src': 'assets/samples/06_SNARE_01.wav',      'volume': 1   },
+    'clap':     {'src': 'assets/samples/26_CLAP.wav',          'volume': 0.1 },
+    'clHat':    {'src': 'assets/samples/09_HI-HAT_CLOSED.wav', 'volume': 0.2 },
+    'opHat':    {'src': 'assets/samples/11_HI-HAT_OPEN.wav',   'volume': 0.07},
+    'yeah':     {'src': 'assets/samples/awyeah.wav',           'volume': 0.4 },
+    'feel':     {'src': 'assets/samples/canyoufeelit.wav',     'volume': 0.4 },
+    'check':    {'src': 'assets/samples/checkthisout.wav',     'volume': 0.4 },
+    'here':     {'src': 'assets/samples/herewego.wav',         'volume': 0.4 },
+    'oww':      {'src': 'assets/samples/oww.wav',              'volume': 0.4 },
+    'woo':      {'src': 'assets/samples/woo.wav',              'volume': 0.4 },
+    'hiTom':    {'src': 'assets/samples/12_TOM_01.wav',        'volume': 0.3 },
+    'midTom':   {'src': 'assets/samples/14_TOM_03.wav',        'volume': 0.3 },
+    'loTom':    {'src': 'assets/samples/17_TOM_06.wav',        'volume': 0.3 },
+    'cowbell':  {'src': 'assets/samples/808cowbell.wav',       'volume': 0.5 }
 };
 
 var pattern     = [

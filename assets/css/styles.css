@@ -3,7 +3,7 @@
   html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
 section {
-    background: url(../../images/main.jpg) no-repeat;
+    background: url(../../assets/images/main.jpg) no-repeat;
     width: 820px;
     height: 400px;
     margin: 0 auto;
@@ -25,7 +25,7 @@ section {
 
 .simple-button {
     border: none;
-    background: url(../../images/simple-button.jpg) no-repeat;
+    background: url(../../assets/images/simple-button.jpg) no-repeat;
     width: 33px;
     height: 33px;
     overflow: hidden;
@@ -33,7 +33,7 @@ section {
     white-space: nowrap;
 }
 
-.simple-button.active { background: url(../../images/simple-button-active.jpg) no-repeat; }
+.simple-button.active { background: url(../../assets/images/simple-button-active.jpg) no-repeat; }
 
 .simple-button.on { border: 1px solid red; }
 
@@ -47,7 +47,7 @@ section {
 .top-btn button {
     display: block;
     border: none;
-    background: url(../../images/start-stop.jpg) no-repeat center top;
+    background: url(../../assets/images/start-stop.jpg) no-repeat center top;
     width: 39px;
     height: 36px;
     overflow: hidden;
@@ -56,7 +56,7 @@ section {
     margin: 8px auto;
 }
 
-.top-btn button.active { background: url(../../images/start-stop-active.jpg) no-repeat center top; }
+.top-btn button.active { background: url(../../assets/images/start-stop-active.jpg) no-repeat center top; }
 
 .top-btn span {
     display: block;
