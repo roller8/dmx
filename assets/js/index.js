@@ -5,7 +5,10 @@ var minuteToMil = 60000;
 var subdivision = 4;
 var interval    = Math.round((minuteToMil / tempo) / subdivision);
 var swing       = false;
+var audioCtx    = new (window.AudioContext || window.webkitAudioContext)();
 var monoAudio   = new Audio();
+// var source      = audioCtx.createMediaElementSource(monoAudio);  // requires web server to play back samples
+var reverb       = audioCtx.createConvolver();
 
 var sounds      = {
     'kick':     {'src': 'assets/samples/03_BASS_01.wav',       'volume': 1   },
@@ -40,6 +43,7 @@ function initAudioPlayer() {
     bindDrumKeys();
     togglePattern();
     handleSwing();
+    handleBassline();
 }
 
 function setObjReference() {
@@ -56,6 +60,18 @@ function setObjReference() {
             else if (elt.className.match(/(^| )clap( |$)/)) trigger(sounds.clap);
         });
     });
+}
+
+function handleBassline() {
+    var oscillator = audioCtx.createOscillator();
+    oscillator.type = 'square';
+    oscillator.frequency.value = 80;    // hertz
+    oscillator.connect(reverb);
+    reverb.connect(audioCtx.destination);
+    oscillator.start();
+    setTimeout(function(){
+        oscillator.stop();
+    }, 100);
 }
 
 function handleSwing() {
