@@ -190,6 +190,7 @@ function bindDrumKeys() {
                 break;
             case 32:
                 $startButton.click();
+                $window.event.preventDefault();
                 break;
         }
     });
