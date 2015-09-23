@@ -6,3 +6,7 @@ Inspired by the legendary Oberheim DMX manufactured by Obeheim Electronics. This
 
 * https://en.wikipedia.org/wiki/Oberheim_DMX
 * http://www.vintagesynth.com/oberheim/dmx.php
+
+### Authors
+* [Jumpei Kato](https://github.com/katomonster)
+* [Raul Rubio](https://github.com/roller8)
